@@ -1,3 +1,48 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bg-blur::before {
+  content: '';
+  position: fixed;
+  top: -100vh;
+  left: -100vw;
+  height: 300vh;
+  width: 300vw;
+  background: #162126 url(../public/noise.png);
+  animation: grain 8s steps(10) infinite;
+}
+
+@keyframes grain {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-5vh, -10vh);
+  }
+  20% {
+    transform: translate(-15vh, 5ch);
+  }
+  30% {
+    transform: translate(7vh, -25vh);
+  }
+  40% {
+    transform: translate(-5vh, 25vh);
+  }
+  50% {
+    transform: translate(-15vh, 10vh);
+  }
+  60% {
+    transform: translate(15vh, 0vh);
+  }
+  70% {
+    transform: translate(0vh, 15vh);
+  }
+  80% {
+    transform: translate(3vh, 35vh);
+  }
+  90% {
+    transform: translate(-10vh, 10vh);
+  }
+}
