@@ -5,7 +5,7 @@ import { Hero, About } from "@/components/Home";
 import { useWindowScroll, useShallowEffect } from "@mantine/hooks";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import { useRef } from "react";
+import { Suspense, useRef } from "react";
 
 const markazi = Alkatra({
   subsets: ["latin"],
@@ -41,7 +41,9 @@ export default function Home() {
     <>
       <div className="h-screen w-screen bg-blur fixed top-0 ">
         <Canvas>
-          <Globe scroll={scroll.y} />
+          <Suspense fallback={null}>
+            <Globe scroll={scroll.y} />
+          </Suspense>
         </Canvas>
       </div>
       <div
@@ -49,12 +51,12 @@ export default function Home() {
         className={`absolute top-0 w-screen overflow-x-hidden text-white ${markazi.className}`}
       >
         <Hero />
-          <div
-            ref={SlidesContainerRef}
-            className="flex h-screen w-[200vw]"
-          >
-            <About />
-          </div>
+        <div ref={SlidesContainerRef} className="flex h-screen w-[200vw]">
+          <About />
+        </div>
+        <footer className=" h-[50vh] flex justify-center items-center bg-[#162126] w-screen">
+          Footer
+        </footer>
       </div>
     </>
   );

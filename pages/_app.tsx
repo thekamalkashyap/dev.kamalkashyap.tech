@@ -9,6 +9,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="shortcut icon" href="logo.png" type="image/png" />
         <title>kamal kashyap</title>
       </Head>
+
       <Component {...pageProps} />
     </>
   );

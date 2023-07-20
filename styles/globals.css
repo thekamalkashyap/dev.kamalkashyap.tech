@@ -2,8 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+h2 {
+  @apply text-5xl font-bold;
+}
+h3 {
+  @apply text-4xl font-light;
+}
+p {
+  @apply font-medium text-justify text-2xl;
+}
+
 .bg-blur::before {
-  content: '';
+  content: "";
   position: fixed;
   top: -100vh;
   left: -100vw;

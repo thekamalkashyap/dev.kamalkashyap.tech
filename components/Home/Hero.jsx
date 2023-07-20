@@ -6,11 +6,11 @@ const Hero = () => {
       <div className="flex-[3] flex flex-col justify-end items-start">
         <div>
           <h1 className="font-bold text-8xl">Kamal Kashyap</h1>
-          <h2 className="font-bold text-5xl">Creative developer</h2>
+          <h2>Creative developer</h2>
         </div>
       </div>
       <div className="flex-[2] flex gap-4 flex-col justify-start items-end">
-        <p className=" font-medium text-justify text-2xl">
+        <p className="text-justify">
           I am Kamal kashyap, a creative developer with a passion for people and
           establishing meaningful connections. I specialise in crafting digital
           experiences that leave a lasting impact.
