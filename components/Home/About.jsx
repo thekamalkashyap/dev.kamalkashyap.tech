@@ -28,7 +28,7 @@ const About = () => {
           ?
         </div>
       </div>
-      <div className="box h-screen w-screen px-16 py-20 grid gap-12 grid-rows-5 grid-cols-6">
+      <div className="box h-screen w-screen px-16 py-28 grid gap-12 grid-rows-5 grid-cols-6">
         <h2 className="col-span-6 text-center">Why its worth working with me?</h2>
         <div className=" row-span-2 px-6 col-span-3">
           <h3>From scratch</h3>

@@ -5,7 +5,7 @@ const Hero = () => {
     <div className="min-h-screen w-screen px-16 py-24 flex">
       <div className="flex-[3] flex flex-col justify-end items-start">
         <div>
-          <h1 className="font-bold text-8xl">Kamal Kashyap</h1>
+          <h1 className="font-bold font-anim text-8xl">Kamal Kashyap</h1>
           <h2>Creative developer</h2>
         </div>
       </div>

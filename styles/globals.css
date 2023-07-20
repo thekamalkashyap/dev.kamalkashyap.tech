@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+button {
+  @apply z-10;
+}
+
 h2 {
   @apply text-5xl font-bold;
 }
@@ -12,6 +16,30 @@ p {
   @apply font-medium text-justify text-2xl;
 }
 
+.font-anim {
+  animation: font-animation infinite;
+  animation-duration: 6s;
+  transition-timing-function: ease-in-out;
+}
+
+@keyframes font-animation {
+  0% {
+    font-variation-settings: "wght" 400, "wdth" 100;
+  }
+  25% {
+    font-variation-settings: "wght" 800, "wdth" 100;
+  }
+  50% {
+    font-variation-settings: "wght" 600, "wdth" 75;
+  }
+  75% {
+    font-variation-settings: "wght" 400, "wdth" 75;
+  }
+  100% {
+    font-variation-settings: "wght" 400, "wdth" 100;
+  }
+}
+
 .bg-blur::before {
   content: "";
   position: fixed;
@@ -19,7 +47,7 @@ p {
   left: -100vw;
   height: 300vh;
   width: 300vw;
-  background: #162126 url(../public/noise.png);
+  background: url(../public/noise.png);
   animation: grain 8s steps(10) infinite;
 }
 
