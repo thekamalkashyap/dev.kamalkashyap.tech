@@ -1,4 +1,4 @@
-import React from "react";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -15,9 +15,12 @@ const Hero = () => {
           establishing meaningful connections. I specialise in crafting digital
           experiences that leave a lasting impact.
         </p>
-        <button className="font-semibold text-2xl py-2 px-12 transition-colors duration-500 border-[3px] hover:bg-transparent hover:text-white border-white bg-white text-[#162126] rounded-lg">
+        <Link
+          href="/about"
+          className="font-semibold z-10 text-2xl py-2 px-12 transition-colors duration-500 border-[3px] hover:bg-transparent hover:text-white border-white bg-white text-[#162126] rounded-lg"
+        >
           About me
-        </button>
+        </Link>
       </div>
     </div>
   );

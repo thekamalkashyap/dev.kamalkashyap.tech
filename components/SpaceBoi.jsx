@@ -12,13 +12,13 @@ import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
 export default function Model(props) {
-  const groupRef = useRef();
+  const group = useRef();
   const { nodes, materials } = useGLTF("/space_boi.glb");
   useFrame(() => {
-    groupRef.current.rotation.y += 0.01;
+    group.current.rotation.y += 0.01;
   });
   return (
-    <group position={[-4,0,0]} ref={groupRef} {...props} dispose={null}>
+    <group position={[-4,0,0]} ref={group} {...props} dispose={null}>
       <group position={[0,-2.5,0]} scale={0.01}>
         <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
           <mesh

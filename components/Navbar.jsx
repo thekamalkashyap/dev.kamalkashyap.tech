@@ -1,10 +1,5 @@
 import { useRef } from "react";
 import Link from "next/link";
-import { Alkatra } from "next/font/google";
-
-const alkatra = Alkatra({
-  subsets: ["latin"],
-});
 
 const navLinkArr = [
   { title: "Home", url: "/" },
@@ -26,11 +21,9 @@ const Navbar = () => {
   const hamRef = useRef();
   const menuRef = useRef();
   return (
-    <header
-      className={`flex relative text-white justify-center items-center ${alkatra.className}`}
-    >
-      <div className=" w-[50vw] h-16 flex justify-between px-6 items-center z-50 border border-[#324a56] fixed top-4 bg-[rgba(42,43,56,.5)] backdrop-blur-md rounded-2xl ">
-        <Link className=" font-black text-3xl" href={"/"}>
+    <header className="flex relative text-white justify-center items-center">
+      <div className="w-[50vw] h-16 flex justify-between px-6 items-center z-50 border border-[#324a56] fixed top-4 bg-[rgba(42,43,56,.5)] backdrop-blur-md rounded-2xl ">
+        <Link className="font-black text-3xl" href={"/"}>
           kamalkashyap
         </Link>
         <div
@@ -39,7 +32,7 @@ const Navbar = () => {
             menuRef.current.classList.toggle("translate-x-[-100vw]");
           }}
           ref={hamRef}
-          id="hamburger-9"
+          id="hamburger"
         >
           <span className="line"></span>
           <span className="line"></span>

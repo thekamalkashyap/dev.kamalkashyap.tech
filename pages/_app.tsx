@@ -4,7 +4,6 @@ import Head from "next/head";
 import Navbar from "@/components/Navbar";
 import { Alkatra } from "next/font/google";
 
-
 const alkatra = Alkatra({
   subsets: ["latin"],
 });

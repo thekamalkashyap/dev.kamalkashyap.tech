@@ -1,15 +1,14 @@
 import React, { Suspense } from "react";
 import gsap from "gsap";
 import { Observer } from "gsap/dist/Observer";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useShallowEffect } from "@mantine/hooks";
 import { Canvas } from "@react-three/fiber";
 import Laptop from "@/components/Laptop";
+import Loader from "../components/Loader";
 
 const portfolio = () => {
   const arr = [...Array(5).keys()];
   gsap.registerPlugin(Observer);
-  gsap.registerPlugin(ScrollTrigger);
 
   useShallowEffect(() => {
     // create an infinite loop
@@ -155,32 +154,32 @@ const portfolio = () => {
 
   return (
     <>
-      <div className="gallery h-screen w-screen overflow-hidden absolute bg-blur">
-        <ul className="cards flex flex-nowrap">
-          {arr.map((project, index) => (
-            <li
-              className=" h-screen w-screen basis-[100vw] flex-grow-0 flex-shrink-0 grid grid-rows-1 grid-cols-2"
-              key={index}
-            >
-              <div className=" row-span-1 col-span-1 flex justify-center items-center px-6">
-                {project + 1}. Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Qui cum earum nostrum ducimus magnam eos ex.
-                Quae fugiat perferendis placeat aliquid est! Expedita eius
-                cupiditate impedit quidem consectetur repellendus
-                exercitationem?
-              </div>
-              <div className=" h-screen row-span-1 col-span-1">
-                <Canvas>
-                  <Suspense fallback={null}>
+      <Suspense fallback={<Loader />}>
+        <div className="gallery scroll-smooth h-screen w-screen overflow-hidden absolute bg-blur">
+          <ul className="cards flex flex-nowrap">
+            {arr.map((project, index) => (
+              <li
+                className=" h-screen w-screen basis-[100vw] flex-grow-0 flex-shrink-0 grid grid-rows-1 grid-cols-2"
+                key={index}
+              >
+                <div className=" row-span-1 col-span-1 flex justify-center items-center px-6">
+                  {project + 1}. Lorem ipsum dolor sit amet consectetur
+                  adipisicing elit. Qui cum earum nostrum ducimus magnam eos ex.
+                  Quae fugiat perferendis placeat aliquid est! Expedita eius
+                  cupiditate impedit quidem consectetur repellendus
+                  exercitationem?
+                </div>
+                <div className=" h-screen flex justify-center items-center row-span-1 col-span-1">
+                  <Canvas>
                     <directionalLight intensity={0.1} position={[2, 4, 4]} />
-                    <Laptop />
-                  </Suspense>
-                </Canvas>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
+                    <Laptop img={"/avatar.webp"} />
+                  </Canvas>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Suspense>
     </>
   );
 };

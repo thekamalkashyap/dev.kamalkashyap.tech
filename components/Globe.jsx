@@ -20,10 +20,6 @@ export default function Model({ scroll }, props) {
     actions["holy cow! an animation?!"].play();
   }, []);
 
-  // useEffect(() => {
-  //   console.log(scroll);
-  // }, [scroll]);
-
   useFrame(() => {
     group.current.position.z = scroll / 1200;
   });
