@@ -41,9 +41,9 @@ const Navbar = () => {
           ref={hamRef}
           id="hamburger-9"
         >
-          <span class="line"></span>
-          <span class="line"></span>
-          <span class="line"></span>
+          <span className="line"></span>
+          <span className="line"></span>
+          <span className="line"></span>
         </div>
       </div>
       <nav

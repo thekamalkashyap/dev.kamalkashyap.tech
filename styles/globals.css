@@ -41,13 +41,14 @@ p {
 }
 
 .bg-blur {
-  background: url(../public//noise.png),#162126;
+  background: url(../public//noise.png), #162126;
   background-blend-mode: overlay;
 }
 
 #hamburger-9 {
   position: relative;
   scale: 0.7;
+  margin-bottom: 3px;
   -webkit-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
