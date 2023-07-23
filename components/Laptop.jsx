@@ -4,12 +4,21 @@ Command: npx gltfjsx@6.2.10 macbook-pro.glb
 */
 
 import { useGLTF, useTexture } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+import { useRef } from "react";
 
 export default function Model({ img }) {
+  const group = useRef();
   const { nodes, materials } = useGLTF("/macbook-pro.glb");
   const texture = useTexture(img);
+  
+  useFrame((state) => {
+    const elapsedTime = state.clock.getElapsedTime();
+    group.current.rotation.y = Math.sin(elapsedTime) / 3;
+  });
+
   return (
-    <group dispose={null}>
+    <group ref={group} dispose={null}>
       <mesh geometry={nodes.Keyboard.geometry} material={materials.Frame}>
         <mesh geometry={nodes.Body.geometry} material={materials.Frame} />
         <mesh geometry={nodes.Touchbar.geometry} material={materials.Frame} />

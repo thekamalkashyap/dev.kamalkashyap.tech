@@ -1,18 +1,17 @@
-import React, { Suspense } from "react";
 import gsap from "gsap";
 import { Observer } from "gsap/dist/Observer";
 import { useShallowEffect } from "@mantine/hooks";
 import { Canvas } from "@react-three/fiber";
 import Laptop from "@/components/Laptop";
-import Loader from "../components/Loader";
 
 const portfolio = () => {
   const arr = [...Array(5).keys()];
   gsap.registerPlugin(Observer);
 
+  // horizontal infinite Loop logic
   useShallowEffect(() => {
     // create an infinite loop
-    let loop = horizontalLoop(".cards li", { repeat: -1 });
+    let loop = horizontalLoop(".cards li", { repeat: -1, speed: 0.25 });
     // create a tween that'll always decelerate the timeScale of the timeline back to 0 over the course of 0.5 seconds (or whatever)
     let slow = gsap.to(loop, { timeScale: 0, duration: 0.5 });
     // make the loop stopped initially.
@@ -63,7 +62,7 @@ const portfolio = () => {
         widths = [],
         xPercents = [],
         curIndex = 0,
-        pixelsPerSecond = (config.speed || 1) * 100,
+        pixelsPerSecond = (config.speed || 0.5) * 100,
         snap =
           config.snap === false ? (v) => v : gsap.utils.snap(config.snap || 1), // some browsers shift by a pixel to accommodate flex layouts, so for example if width is 20% the first element's width might be 242px, and the next 243px, alternating back and forth. So we snap to 5 percentage points to make things look more natural
         totalWidth,
@@ -154,32 +153,30 @@ const portfolio = () => {
 
   return (
     <>
-      <Suspense fallback={<Loader />}>
-        <div className="gallery scroll-smooth h-screen w-screen overflow-hidden absolute bg-blur">
-          <ul className="cards flex flex-nowrap">
-            {arr.map((project, index) => (
-              <li
-                className=" h-screen w-screen basis-[100vw] flex-grow-0 flex-shrink-0 grid grid-rows-1 grid-cols-2"
-                key={index}
-              >
-                <div className=" row-span-1 col-span-1 flex justify-center items-center px-6">
-                  {project + 1}. Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit. Qui cum earum nostrum ducimus magnam eos ex.
-                  Quae fugiat perferendis placeat aliquid est! Expedita eius
-                  cupiditate impedit quidem consectetur repellendus
-                  exercitationem?
-                </div>
-                <div className=" h-screen flex justify-center items-center row-span-1 col-span-1">
-                  <Canvas>
-                    <directionalLight intensity={0.1} position={[2, 4, 4]} />
-                    <Laptop img={"/avatar.webp"} />
-                  </Canvas>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </Suspense>
+      <div className="gallery scroll-smooth h-screen w-screen overflow-hidden absolute bg-blur">
+        <ul className="cards flex flex-nowrap">
+          {arr.map((project, index) => (
+            <li
+              className=" h-screen w-screen basis-[100vw] flex-grow-0 flex-shrink-0 grid grid-rows-1 grid-cols-2"
+              key={index}
+            >
+              <div className=" row-span-1 col-span-1 flex justify-center items-center px-6">
+                {project + 1}. Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Qui cum earum nostrum ducimus magnam eos ex.
+                Quae fugiat perferendis placeat aliquid est! Expedita eius
+                cupiditate impedit quidem consectetur repellendus
+                exercitationem?
+              </div>
+              <div className=" h-screen flex justify-center items-center row-span-1 col-span-1">
+                <Canvas>
+                  <directionalLight intensity={0.1} position={[2, 4, 4]} />
+                  <Laptop img={"/avatar.webp"} />
+                </Canvas>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 };

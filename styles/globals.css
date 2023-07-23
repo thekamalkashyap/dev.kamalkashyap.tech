@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  background-color: #162126;
+}
+
+.cursor-pen{
+  cursor: url(../public//pen.svg), default;
+}
+
 ::-moz-selection {
   background: #324a56;
 }
@@ -227,5 +236,31 @@ p {
   5%,
   100% {
     transform: scale(0);
+  }
+}
+
+.enter-animation {
+  animation: enteranimation 0.3s ease-in-out;
+}
+
+.exit-animation {
+  animation: exitanimation 0.3s ease-in-out;
+}
+
+@keyframes enteranimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes exitanimation {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }

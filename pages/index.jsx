@@ -4,10 +4,9 @@ import { Hero, About, Footer } from "@/components/Home";
 import { useWindowScroll, useShallowEffect } from "@mantine/hooks";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import { Suspense, useRef } from "react";
+import { useRef } from "react";
 import { useDraw } from "@/utils/useDraw";
 import { useElementSize } from "@mantine/hooks";
-import Loader from '@/components/Loader'
 
 export default function Home() {
   gsap.registerPlugin(ScrollTrigger);
@@ -60,41 +59,39 @@ export default function Home() {
 
   return (
     <>
-      <Suspense fallback={<Loader />}>
-        {/* background */}
-        <div className="h-screen w-screen bg-blur fixed top-0">
-          <Canvas>
-            <Globe scroll={scroll.y} />
-          </Canvas>
+      {/* background */}
+      <div className="h-screen w-screen bg-blur fixed top-0">
+        <Canvas>
+          <Globe scroll={scroll.y} />
+        </Canvas>
+      </div>
+      {/* drawing area  */}
+      <div>
+        <canvas
+          ref={canvasRef}
+          onMouseDown={onMouseDown}
+          width={width}
+          height={height}
+          className="absolute cursor-pen top-0 z-10"
+        />
+        <img
+          onClick={clear}
+          className="fixed top-6 right-6 z-50 cursor-pointer"
+          src="/erase.svg"
+          alt="erase"
+        />
+      </div>
+      {/* main content  */}
+      <div
+        ref={ref}
+        className={`absolute scroll-smooth top-0 w-screen overflow-hidden`}
+      >
+        <Hero />
+        <div ref={SlidesContainerRef} className="flex h-screen w-[200vw]">
+          <About />
         </div>
-        {/* drawing area  */}
-        <div>
-          <canvas
-            ref={canvasRef}
-            onMouseDown={onMouseDown}
-            width={width}
-            height={height}
-            className="absolute top-0 z-10"
-          />
-          <img
-            onClick={clear}
-            className="fixed top-6 right-6 z-50 cursor-pointer"
-            src="/erase.svg"
-            alt="erase"
-          />
-        </div>
-        {/* main content  */}
-        <div
-          ref={ref}
-          className={`absolute scroll-smooth top-0 w-screen overflow-hidden`}
-        >
-          <Hero />
-          <div ref={SlidesContainerRef} className="flex h-screen w-[200vw]">
-            <About />
-          </div>
-          <Footer />
-        </div>
-      </Suspense>
+        <Footer />
+      </div>
     </>
   );
 }
