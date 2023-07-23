@@ -11,14 +11,14 @@ export default function Model({ img }) {
   const group = useRef();
   const { nodes, materials } = useGLTF("/macbook-pro.glb");
   const texture = useTexture(img);
-  
+
   useFrame((state) => {
     const elapsedTime = state.clock.getElapsedTime();
-    group.current.rotation.y = Math.sin(elapsedTime) / 3;
+    group.current.rotation.y = Math.sin(elapsedTime) / 6 - 0.5;
   });
 
   return (
-    <group ref={group} dispose={null}>
+    <group rotation={[0.2,0,0.05]} ref={group} dispose={null}>
       <mesh geometry={nodes.Keyboard.geometry} material={materials.Frame}>
         <mesh geometry={nodes.Body.geometry} material={materials.Frame} />
         <mesh geometry={nodes.Touchbar.geometry} material={materials.Frame} />

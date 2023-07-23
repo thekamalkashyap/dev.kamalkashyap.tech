@@ -169,7 +169,7 @@ const portfolio = () => {
               </div>
               <div className=" h-screen flex justify-center items-center row-span-1 col-span-1">
                 <Canvas>
-                  <directionalLight intensity={0.1} position={[2, 4, 4]} />
+                  <pointLight intensity={0.08} position={[8, 5, 3]} />
                   <Laptop img={"/avatar.webp"} />
                 </Canvas>
               </div>
