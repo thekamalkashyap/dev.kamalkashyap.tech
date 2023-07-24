@@ -18,7 +18,7 @@ export default function Model({ img }) {
   });
 
   return (
-    <group rotation={[0.2,0,0.05]} ref={group} dispose={null}>
+    <group rotation={[0.2, 0, 0.05]} ref={group} dispose={null}>
       <mesh geometry={nodes.Keyboard.geometry} material={materials.Frame}>
         <mesh geometry={nodes.Body.geometry} material={materials.Frame} />
         <mesh geometry={nodes.Touchbar.geometry} material={materials.Frame} />
@@ -39,7 +39,13 @@ export default function Model({ img }) {
           position={[0, 1.2, -0.106]}
           rotation={[0, 0, Math.PI]}
         >
-          <meshBasicMaterial map={texture} />
+          <meshPhongMaterial
+            color={"white"}
+            specular={"white"}
+            emissive={"black"}
+            shininess={100}
+            map={texture}
+          />
         </mesh>
       </mesh>
     </group>

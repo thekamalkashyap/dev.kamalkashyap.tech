@@ -160,16 +160,19 @@ const portfolio = () => {
               className=" h-screen w-screen basis-[100vw] flex-grow-0 flex-shrink-0 grid grid-rows-1 grid-cols-2"
               key={index}
             >
-              <div className=" row-span-1 col-span-1 flex justify-center items-center px-6">
-                {project + 1}. Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Qui cum earum nostrum ducimus magnam eos ex.
-                Quae fugiat perferendis placeat aliquid est! Expedita eius
-                cupiditate impedit quidem consectetur repellendus
-                exercitationem?
+              <div className=" row-span-1 col-span-1 flex justify-center items-center pl-12">
+                <p>
+                  {project + 1}. Lorem ipsum dolor sit amet consectetur
+                  adipisicing elit. Qui cum earum nostrum ducimus magnam eos ex.
+                  Quae fugiat perferendis placeat aliquid est! Expedita eius
+                  cupiditate impedit quidem consectetur repellendus
+                  exercitationem?
+                </p>
               </div>
               <div className=" h-screen flex justify-center items-center row-span-1 col-span-1">
                 <Canvas>
-                  <pointLight intensity={0.08} position={[8, 5, 3]} />
+                  <ambientLight intensity={0.1} />
+                  <pointLight intensity={0.3} position={[-8, 5, 3]} />
                   <Laptop img={"/avatar.webp"} />
                 </Canvas>
               </div>
